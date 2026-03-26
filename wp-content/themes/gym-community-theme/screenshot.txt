@@ -1,0 +1,9 @@
+SCREENSHOT PLACEHOLDER
+
+Voor een echte screenshot:
+1. Activeer het thema in WordPress
+2. Maak een screenshot van de homepage (1200x900px)
+3. Sla op als screenshot.png in de theme directory
+4. Verwijder dit bestand
+
+De screenshot wordt getoond in Appearance > Themes in WordPress admin.
