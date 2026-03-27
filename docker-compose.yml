@@ -1,0 +1,65 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: gym_community_db
+    restart: always
+    environment:
+      MYSQL_DATABASE: Apex_Athletes
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./docker/mysql-init:/docker-entrypoint-initdb.d
+    ports:
+      - "3307:3306"
+    networks:
+      - gym_network
+
+  # WordPress
+  wordpress:
+    image: wordpress:latest
+    container_name: gym_community_wordpress
+    restart: always
+    depends_on:
+      - db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_NAME: Apex_Athletes
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DEBUG: 1
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+      - ./wp-config-docker.php:/var/www/html/wp-config.php
+    ports:
+      - "8080:80"
+    networks:
+      - gym_network
+
+  # phpMyAdmin (optional, voor database beheer)
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: gym_community_phpmyadmin
+    restart: always
+    depends_on:
+      - db
+    environment:
+      PMA_HOST: db
+      PMA_PORT: 3306
+      PMA_USER: wordpress
+      PMA_PASSWORD: wordpress
+    ports:
+      - "8081:80"
+    networks:
+      - gym_network
+
+volumes:
+  db_data:
+
+networks:
+  gym_network:
+    driver: bridge

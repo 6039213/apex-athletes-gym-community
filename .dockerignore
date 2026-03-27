@@ -1,0 +1,42 @@
+# Git
+.git
+.gitignore
+
+# Documentation
+docs/
+*.md
+!README.md
+
+# Node modules
+node_modules/
+
+# Logs
+*.log
+debug.log
+error_log
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.idea
+.vscode
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.old
+
+# Laragon specific
+.htaccess
+
+# WordPress uploads (will be mounted as volume)
+wp-content/uploads/
+
+# Cache
+wp-content/cache/
