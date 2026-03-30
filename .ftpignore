@@ -1,0 +1,72 @@
+# FTP Upload Exclusion List
+# Bestanden en folders die NIET naar live server geupload moeten worden
+
+# Docker bestanden (NIET UPLOADEN!)
+docker-compose.yml
+Dockerfile
+.dockerignore
+.docker-env
+docker/
+
+# Git bestanden (NIET UPLOADEN!)
+.git/
+.gitignore
+.gitattributes
+
+# Documentatie (NIET UPLOADEN!)
+docs/
+README.md
+PROJECT-STATUS.md
+DOCKER-*.md
+FIX-*.md
+INLEVEREN-*.md
+*.txt
+
+# Scripts (NIET UPLOADEN!)
+*.bat
+*.sh
+
+# Development config (NIET UPLOADEN!)
+wp-config-local.php
+wp-config-docker.php
+wp-config-development.php
+wp-config-auto.php
+
+# Database exports (NIET UPLOADEN!)
+*.sql
+backups/
+
+# Node modules (NIET UPLOADEN!)
+node_modules/
+package.json
+package-lock.json
+
+# IDE bestanden (NIET UPLOADEN!)
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS bestanden (NIET UPLOADEN!)
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs (NIET UPLOADEN!)
+*.log
+debug.log
+error_log
+
+# Temporary bestanden (NIET UPLOADEN!)
+*.tmp
+*.temp
+*.bak
+*.old
+
+# WordPress uploads (OPTIONEEL - kan groot zijn)
+# wp-content/uploads/
+
+# WordPress cache (NIET UPLOADEN!)
+wp-content/cache/
+wp-content/advanced-cache.php
+wp-content/object-cache.php

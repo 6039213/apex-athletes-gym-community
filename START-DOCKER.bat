@@ -5,13 +5,13 @@ echo ========================================
 echo.
 
 echo Stap 1: Controleren of Docker Desktop draait...
-docker --version >nul 2>&1
+docker info >nul 2>&1
 if errorlevel 1 (
-    echo [ERROR] Docker Desktop is niet actief!
+    echo [ERROR] Docker Desktop is niet actief of niet bereikbaar.
     echo.
     echo Volg deze stappen:
     echo 1. Start Docker Desktop
-    echo 2. Wacht tot Docker volledig opgestart is
+    echo 2. Wacht tot Docker volledig is opgestart
     echo 3. Voer dit script opnieuw uit
     echo.
     pause
@@ -21,20 +21,33 @@ if errorlevel 1 (
 echo [OK] Docker is actief
 echo.
 
-echo Stap 2: Stoppen van eventuele oude containers...
-docker-compose down
+echo Stap 2: Docker configuratie valideren...
+docker compose config >nul
+if errorlevel 1 (
+    echo [ERROR] docker compose config faalde.
+    echo Controleer docker-compose.yml en probeer opnieuw.
+    echo.
+    pause
+    exit /b 1
+)
+
+echo [OK] Configuratie is geldig
+echo.
+
+echo Stap 3: Oude containers stoppen...
+docker compose down
 
 echo.
-echo Stap 3: Starten van containers...
-docker-compose up -d
+echo Stap 4: Containers bouwen en starten...
+docker compose up -d --build
 
 echo.
-echo Stap 4: Wachten tot containers klaar zijn (30 seconden)...
-timeout /t 30 /nobreak
+echo Stap 5: Wachten tot de database klaar is...
+timeout /t 20 /nobreak >nul
 
 echo.
-echo Stap 5: Status controleren...
-docker-compose ps
+echo Stap 6: Status controleren...
+docker compose ps
 
 echo.
 echo ========================================
@@ -44,13 +57,15 @@ echo.
 echo WordPress:   http://localhost:8080
 echo Admin:       http://localhost:8080/wp-admin
 echo phpMyAdmin:  http://localhost:8081
+echo MySQL:       localhost:3307
 echo.
-echo Database credentials:
-echo   User: wordpress
-echo   Pass: wordpress
-echo   DB:   Apex_Athletes
+echo Eerste start:
+echo - importeert automatisch docker\mysql-init\gym_community_backup.sql
+echo - zet de oude Laragon URL om naar http://localhost:8080
 echo.
-echo Bekijk logs met: docker-compose logs -f
-echo Stop containers met: docker-compose down
+echo Handige commands:
+echo   docker compose logs -f
+echo   docker compose down
+echo   docker compose down -v   ^(database reset + nieuwe import^)
 echo.
 pause

@@ -1,0 +1,4 @@
+# Docker Environment Marker
+# Dit bestand markeert dat we in Docker draaien
+# Upload dit bestand NIET naar live server!
+DOCKER=true

@@ -11,11 +11,11 @@
  * @package WordPress
  */
 
-// ** Database settings - PAS AAN VOOR JOUW SERVER ** //
-define( 'DB_NAME', 'jouw_database_naam' );
-define( 'DB_USER', 'jouw_database_user' );
-define( 'DB_PASSWORD', 'jouw_database_wachtwoord' );
-define( 'DB_HOST', 'localhost' ); // Of IP van database server
+// ** Database settings - SPL Sites Production ** //
+define( 'DB_NAME', 'st1738846938' );
+define( 'DB_USER', 'st1738846938' );
+define( 'DB_PASSWORD', 'R5IFHm9dw7k6W6r' );
+define( 'DB_HOST', 'localhost' );
 define( 'DB_CHARSET', 'utf8mb4' );
 define( 'DB_COLLATE', '' );
 

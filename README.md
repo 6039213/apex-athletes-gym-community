@@ -1,123 +1,57 @@
 # Gym Community WordPress Website
 
-Een volledig WordPress platform voor een Gym/Fitness Community met custom thema en plugins.
+WordPress-project voor een gym/fitness community met een custom thema, custom plugin en een lokale Docker-ontwikkelomgeving.
 
-## Project Informatie
+## Stack
 
-- **Project:** DevSkills WordPress Thema-ontwikkeling
-- **Community:** Gym/Fitness Community
-- **Ontwikkelaar:** [Jouw naam]
-- **Periode:** 9 weken (Februari - April 2026)
+- WordPress 6.9.4
+- PHP 8.2 (Docker)
+- MySQL 8.0
+- phpMyAdmin
+- Custom theme: `wp-content/themes/gym-community-theme`
+- Custom plugin: `wp-content/plugins/gym-community-plugin`
 
-## Functionaliteit
+## Lokale start met Docker
 
-De website biedt:
-- Nieuwsberichten voor community leden
-- Overzicht van gym activiteiten en lessen
-- Inschrijfsysteem voor trainingen
-- Product en dienst reviews
-- Links naar externe webshops voor producten
+1. Start Docker Desktop.
+2. Ga in een terminal naar `C:\laragon\www\Gym_community`.
+3. Start de omgeving:
 
-## Technische Stack
-
-- **CMS:** WordPress (latest)
-- **Server (lokaal):** Laragon
-- **Database:** MySQL
-- **Versiebeheer:** GitHub
-- **Frontend:** HTML5, CSS3, JavaScript
-- **Backend:** PHP 7.4+
-
-## OTAP Omgevingen
-
-- **O (Ontwikkelen):** Laragon lokaal - `c:\laragon\www\Gym_community`
-- **T (Testen):** Lokale test database
-- **A (Acceptatie):** Staging server via FTP
-- **P (Productie):** Live website via FTP
-
-## Installatie Lokaal
-
-1. Clone deze repository
-2. Importeer database: `Apex_Athletes.sql`
-3. Kopieer `wp-config-sample.php` naar `wp-config.php`
-4. Pas database credentials aan in `wp-config.php`
-5. Start Laragon en open `http://gym_community.test`
-
-## Project Structuur
-
-```
-Gym_community/
-├── wp-content/
-│   ├── themes/
-│   │   └── gym-community-theme/     # Custom thema
-│   └── plugins/
-│       └── gym-community-plugin/    # Custom plugin
-├── .gitignore
-├── README.md
-└── [WordPress core bestanden]
+```bash
+docker compose up -d --build
 ```
 
-## Custom Ontwikkeling
+De applicatie is daarna beschikbaar op:
 
-### Custom Thema: gym-community-theme
-- Volledig responsive design
-- Gym/fitness branding
-- Custom templates voor alle pagina types
+- WordPress: `http://localhost:8080`
+- WordPress admin: `http://localhost:8080/wp-admin`
+- phpMyAdmin: `http://localhost:8081`
+- MySQL: `localhost:3307`
 
-### Custom Plugin: gym-community-plugin
-- **Gym Activiteiten:** Custom Post Type voor lessen en trainingen
-- **Reviews:** Product/dienst review systeem met ratings
-- **Inschrijvingen:** Inschrijfsysteem voor activiteiten
-- **Shortcodes:** `[gym_activities]`, `[gym_schedule]`, `[recent_reviews]`
+## Wat de Docker-migratie doet
 
-## Gebruikte Plugins
+- Draait exact de WordPress-code uit deze repository.
+- Gebruikt een Docker-specifieke `wp-config.php`.
+- Importeert automatisch `docker/mysql-init/gym_community_backup.sql` bij een lege database.
+- Zet de oude Laragon-URL `http://localhost/gym_community` automatisch om naar `http://localhost:8080`.
 
-- Advanced Custom Fields (ACF)
-- Contact Form 7
-- Yoast SEO
-- [Andere plugins worden toegevoegd]
+## Belangrijke commands
 
-## Development Workflow
-
-### Branch Strategie
-- `main` - Productie code
-- `development` - Development code
-- `feature/naam` - Nieuwe features
-- `bugfix/naam` - Bug fixes
-
-### Commit Conventies
-```
-feat: Nieuwe feature
-fix: Bug fix
-docs: Documentatie
-style: Styling aanpassingen
+```bash
+docker compose up -d --build
+docker compose logs -f
+docker compose down
+docker compose down -v
 ```
 
-## Deployment
-
-### Via FTP naar Live Server
-1. Exporteer database lokaal
-2. Upload bestanden via FTP
-3. Importeer database op server
-4. Update wp-config.php met server credentials
-5. Search-replace URLs in database
+Gebruik `docker compose down -v` alleen als je de database opnieuw vanaf de SQL-dump wilt laten opbouwen.
 
 ## Documentatie
 
-- [Plugin Documentatie](wp-content/plugins/gym-community-plugin/README.md)
-- [Gebruikershandleiding](docs/gebruikershandleiding.md)
-- [Deployment Guide](docs/deployment-guide.md)
+- Quick start: `DOCKER-README.md`
+- Uitgebreide setup: `docs/DOCKER-SETUP.md`
+- Projectstatus: `PROJECT-STATUS.md`
 
-## Beveiliging
+## Opmerking
 
-- Security keys geconfigureerd
-- WP_DEBUG enabled in development
-- Bestandsrechten correct ingesteld
-- Reguliere backups
-
-## Support
-
-Voor vragen of problemen, zie de documentatie of neem contact op met de ontwikkelaar.
-
-## Licentie
-
-Dit project is ontwikkeld voor educatieve doeleinden.
+De bestaande Laragon-configuratie blijft in de repository staan, maar de Docker-omgeving gebruikt eigen varianten van `wp-config.php` en `.htaccess` zodat de site op rootniveau via poort `8080` werkt.
