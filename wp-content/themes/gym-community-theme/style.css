@@ -100,10 +100,11 @@ main {
    ========================================================================== */
 
 .site-header {
-    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    /* Challenge 3b: Nieuwe header kleur - paars/blauw gradient */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: #fff;
     padding: 20px 0;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
     position: sticky;
     top: 0;
     z-index: 1000;

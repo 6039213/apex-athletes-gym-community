@@ -9,6 +9,19 @@ get_header();
 ?>
 
 <div class="content-area">
+    <!-- Challenge 3b: Zichtbare Aanpassing -->
+    <div class="welcome-banner" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 40px 20px; text-align: center; margin-bottom: 30px; border-radius: 10px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+        <h2 style="color: white; font-size: 2.5em; margin: 0 0 15px 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
+            🏋️ Welkom bij Gym Community! 💪
+        </h2>
+        <p style="color: #f0f0f0; font-size: 1.2em; margin: 0; max-width: 800px; margin: 0 auto;">
+            Jouw ultieme platform voor fitness activiteiten, reviews en community events. Start vandaag nog met je fitness journey!
+        </p>
+        <p style="color: #ffd700; font-size: 0.9em; margin-top: 15px; font-style: italic;">
+            ✨ Challenge 3b - Docker Deployment Aanpassing ✨
+        </p>
+    </div>
+    
     <?php
     while ( have_posts() ) :
         the_post();
