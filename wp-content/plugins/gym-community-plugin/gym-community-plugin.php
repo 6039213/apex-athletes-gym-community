@@ -2,10 +2,10 @@
 /**
  * Plugin Name: Gym Community Plugin
  * Plugin URI: https://github.com/jouwgebruikersnaam/gym-community-plugin
- * Description: Custom plugin voor Gym Community website met activiteiten, reviews en inschrijfsysteem
- * Version: 1.0.0
- * Author: Jouw Naam
- * Author URI: https://jouwwebsite.nl
+ * Description: Apex Athletes Gym Community plugin met activiteiten, reviews, inschrijfsysteem en uitgebreide shortcodes.
+ * Version: 2.0.0
+ * Author: Apex Athletes
+ * Author URI: https://apexathletes.nl
  * License: GPL v2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain: gym-community-plugin
@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-define( 'GYM_COMMUNITY_VERSION', '1.0.0' );
+define( 'GYM_COMMUNITY_VERSION', '2.0.0' );
 define( 'GYM_COMMUNITY_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'GYM_COMMUNITY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 
