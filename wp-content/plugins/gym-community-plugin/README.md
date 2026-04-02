@@ -1,10 +1,10 @@
-# Gym Community Plugin
+# Gym Community Plugin - Apex Athletes
 
-Een complete WordPress plugin voor het beheren van gym activiteiten, reviews en inschrijvingen voor een fitness community website.
+Een complete WordPress plugin voor het beheren van gym activiteiten, reviews en inschrijvingen voor de Apex Athletes fitness community website.
 
 ## Beschrijving
 
-Deze custom WordPress plugin is ontwikkeld als onderdeel van het DevSkills WordPress project. De plugin biedt uitgebreide functionaliteit voor een gym community website, inclusief:
+Deze custom WordPress plugin is ontwikkeld als onderdeel van het DevSkills WordPress project. Vanaf versie 2.0.0 is de plugin volledig geïntegreerd met het Apex Athletes thema, inclusief consistente branding, CSS custom properties, Nederlandse lokalisatie en uitgebreide hooks voor extensibiliteit. De plugin biedt uitgebreide functionaliteit voor een gym community website, inclusief:
 
 - **Gym Activiteiten:** Beheer lessen en trainingen met details zoals datum, tijd, trainer, capaciteit en moeilijkheidsgraad
 - **Review Systeem:** Product en dienst reviews met 5-sterren rating systeem
@@ -105,19 +105,19 @@ Toon inschrijfformulier voor een activiteit.
 
 ### Admin Interface
 
-#### Settings Pagina
-- Email notificaties aan/uit
-- Admin email configuratie
-- Auto-approve reviews
-- Registratie limiet per gebruiker
-- Plugin statistieken dashboard
+#### Settings Pagina (v2.0.0)
+- **Algemene Instellingen:** Auto-approve reviews, inschrijflimiet, verlopen activiteiten tonen
+- **E-mail Instellingen:** Notificaties aan/uit, admin e-mailadres, bevestigingsmail onderwerp
+- **Thema Status:** Automatische compatibiliteitscontrole met Apex Athletes thema
+- **Plugin Statistieken:** Dashboard met actieve activiteiten, reviews, bevestigde/wachtende inschrijvingen, leden
+- **Data Export:** CSV export van alle registratiegegevens
 
 #### Registraties Beheer
 - Overzicht van alle inschrijvingen
 - Filter op activiteit
-- Export mogelijkheden
-- Status beheer
-- Verwijder functionaliteit
+- CSV export (via instellingenpagina)
+- Status beheer (confirmed, pending, cancelled)
+- Verwijder functionaliteit met bevestiging
 
 #### Custom Columns
 - Activiteiten: Datum/tijd, Trainer, Capaciteit, Inschrijvingen, Type
@@ -125,9 +125,23 @@ Toon inschrijfformulier voor een activiteit.
 
 ### Hooks & Filters
 
-De plugin gebruikt WordPress hooks en filters voor uitbreidbaarheid:
+De plugin biedt uitgebreide hooks en filters voor extensibiliteit:
 
-**Actions:**
+**Custom Action Hooks:**
+- `gym_community_admin_loaded` - Vuurt af wanneer de admin class geladen is. Ontvang `$admin` instance.
+- `gym_community_admin_menu` - Voeg extra submenu pagina's toe. Ontvang `$parent_slug`.
+- `gym_community_register_settings` - Registreer extra plugin instellingen via Settings API.
+- `gym_community_settings_after` - Voeg content toe onder de instellingenpagina.
+- `gym_community_before_registration` - Vuurt af vóór het verwerken van een inschrijving. Ontvang `$activity_id`, `$user_email`.
+- `gym_community_after_registration` - Vuurt af na een succesvolle inschrijving. Ontvang `$registration_id`, `$activity_id`, `$user_name`, `$user_email`.
+
+**Custom Filter Hooks:**
+- `gym_community_activity_card_html` - Filter de HTML output van een activiteitenkaart.
+- `gym_community_review_card_html` - Filter de HTML output van een reviewkaart.
+- `gym_community_registration_fields` - Voeg extra velden toe aan het inschrijfformulier.
+- `gym_community_confirmation_email` - Filter het bevestigingsmail bericht. Ontvang `$message`, `$activity_id`, `$user_name`.
+
+**WordPress Actions (standaard):**
 - `init` - Registreer post types en taxonomieën
 - `admin_menu` - Admin menu items
 - `wp_enqueue_scripts` - Frontend scripts en styles
@@ -136,7 +150,22 @@ De plugin gebruikt WordPress hooks en filters voor uitbreidbaarheid:
 - `save_post_gym_review` - Opslaan review meta data
 
 **AJAX Actions:**
-- `gym_register_activity` - Verwerk inschrijvingen
+- `gym_register_activity` - Verwerk inschrijvingen (logged in + niet ingelogd)
+
+### Hooks Voorbeeld
+
+```php
+// Extra actie na inschrijving (bijv. logging)
+add_action( 'gym_community_after_registration', function( $reg_id, $activity_id, $name, $email ) {
+    error_log( "Nieuwe inschrijving #{$reg_id} voor activiteit #{$activity_id} door {$name}" );
+}, 10, 4 );
+
+// Bevestigingsmail aanpassen
+add_filter( 'gym_community_confirmation_email', function( $message, $activity_id, $user_name ) {
+    $message .= "\n\nPS: Vergeet je sporttas niet!";
+    return $message;
+}, 10, 3 );
+```
 
 ## Installatie
 
@@ -363,6 +392,19 @@ Ja, de shortcodes werken met alle page builders die WordPress shortcodes onderst
 
 ## Changelog
 
+### Version 2.0.0 - Apex Athletes Branding
+- Volledige Apex Athletes huisstijl integratie (kleuren, fonts, CSS variabelen)
+- Nederlandse lokalisatie van alle plugin teksten
+- Uitgebreide admin instellingen met e-mail configuratie sectie
+- CSV export functionaliteit voor registraties
+- Thema compatibiliteitscontrole met admin notice
+- Custom action hooks: `gym_community_before_registration`, `gym_community_after_registration`, `gym_community_admin_loaded`, `gym_community_admin_menu`, `gym_community_register_settings`, `gym_community_settings_after`
+- Custom filter hooks: `gym_community_confirmation_email`, `gym_community_activity_card_html`, `gym_community_review_card_html`, `gym_community_registration_fields`
+- Admin notificatie-email bij nieuwe inschrijvingen
+- Verbeterde statistieken met pending inschrijvingen en ledencount
+- Sanitize callbacks op alle registered settings
+- Plugin versie bijgewerkt naar 2.0.0
+
 ### Version 1.0.0
 - Initial release
 - Gym Activities Custom Post Type
@@ -382,13 +424,28 @@ Voor vragen, bugs of feature requests:
 - Bekijk de code comments voor developer documentatie
 - Contact de ontwikkelaar
 
+## Thema Integratie
+
+De plugin is ontworpen om naadloos samen te werken met het **Apex Athletes - Gym Community Theme** (v2.0.0+). Het thema biedt:
+
+- `archive-gym_activity.php` - Archief template met grid layout, metadata en beschikbaarheid
+- `archive-gym_review.php` - Archief template met sterrenratings en productinfo
+- `single-gym_activity.php` - Detail pagina met inschrijfformulier en boekingsstatus
+- `single-gym_review.php` - Detail pagina met pros/cons, productlink en gerelateerde reviews
+- `front-page.php` - Homepage integratie met recente activiteiten en reviews secties
+- CSS custom properties (`--color-accent`, `--color-primary`, etc.) voor consistente styling
+- Customizer opties voor dynamische branding aanpassingen
+
+De plugin werkt ook zonder het Apex Athletes thema, maar bepaalde template-integraties zijn dan niet beschikbaar.
+
 ## Credits
 
-- **Ontwikkeld door:** [Jouw Naam]
+- **Ontwikkeld door:** Apex Athletes Development
 - **Project:** DevSkills WordPress Thema-ontwikkeling
-- **Jaar:** 2026
+- **Jaar:** 2025
 - **Icons:** WordPress Dashicons
 - **Framework:** WordPress Plugin API
+- **Fonts:** Google Fonts (Oswald, Montserrat)
 
 ## Licentie
 
@@ -404,9 +461,12 @@ Dit project is ontwikkeld voor educatieve doeleinden als onderdeel van een softw
 - [ ] Wachtlijst voor volle activiteiten
 - [ ] Recurring activiteiten (wekelijks/maandelijks)
 - [ ] Email template customization via admin
-- [ ] Export registraties naar CSV
+- [x] Export registraties naar CSV *(v2.0.0)*
 - [ ] Google Calendar integratie
 - [ ] SMS notificaties (met externe service)
 - [ ] Review submission formulier (frontend)
 - [ ] Rating aggregatie per product
 - [ ] Social sharing voor activiteiten en reviews
+- [x] Apex Athletes branding integratie *(v2.0.0)*
+- [x] Nederlandse lokalisatie *(v2.0.0)*
+- [x] Custom hooks voor extensibiliteit *(v2.0.0)*
