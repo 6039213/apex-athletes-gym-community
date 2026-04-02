@@ -1,10 +1,24 @@
 /**
- * Gym Community Plugin Admin Styles
+ * Gym Community Plugin Admin Styles - Apex Athletes
+ *
+ * Admin dashboard styling consistent met de Apex Athletes huisstijl.
+ *
+ * @since 2.0.0
  */
 
 /* ==========================================================================
    Settings Page
    ========================================================================== */
+
+.gym-admin-wrap {
+    max-width: 1000px;
+}
+
+.gym-admin-wrap h1 {
+    color: #2C3E50;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
 
 .gym-stats {
     display: grid;
@@ -15,23 +29,33 @@
 
 .stat-box {
     background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    padding: 20px;
+    border: 1px solid #DFE6E9;
+    border-radius: 8px;
+    padding: 25px;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    border-top: 3px solid #4ECDC4;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .stat-box h3 {
-    margin: 0 0 10px 0;
-    color: #e74c3c;
+    margin: 0 0 8px 0;
+    color: #4ECDC4;
     font-size: 2.5rem;
+    font-weight: 700;
 }
 
 .stat-box p {
     margin: 0;
-    color: #666;
+    color: #636E72;
     font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 /* ==========================================================================
@@ -43,29 +67,32 @@
 }
 
 .shortcode-doc {
-    background: #f9f9f9;
-    border-left: 4px solid #e74c3c;
-    padding: 20px;
+    background: #F5F7FA;
+    border-left: 4px solid #4ECDC4;
+    padding: 25px;
     margin-bottom: 20px;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .shortcode-doc h3 {
     margin-top: 0;
-    color: #2c3e50;
+    color: #2C3E50;
+    font-size: 1.2rem;
 }
 
 .shortcode-doc code {
     background: #fff;
-    padding: 2px 6px;
-    border-radius: 3px;
-    border: 1px solid #ddd;
+    padding: 3px 8px;
+    border-radius: 4px;
+    border: 1px solid #DFE6E9;
     font-family: 'Courier New', monospace;
+    color: #2C6E6A;
+    font-size: 0.9rem;
 }
 
 .shortcode-doc h4 {
     margin: 15px 0 10px 0;
-    color: #34495e;
+    color: #2C3E50;
 }
 
 .shortcode-doc ul {
@@ -75,6 +102,7 @@
 
 .shortcode-doc li {
     margin-bottom: 5px;
+    color: #636E72;
 }
 
 /* ==========================================================================
@@ -82,13 +110,18 @@
    ========================================================================== */
 
 .column-rating .stars {
-    color: #f39c12;
+    color: #F39C12;
     font-size: 16px;
 }
 
 .column-registrations .spots-full {
-    color: #e74c3c;
+    color: #D63031;
     font-weight: 700;
+}
+
+.column-registrations .spots-available {
+    color: #00B894;
+    font-weight: 600;
 }
 
 /* ==========================================================================
@@ -129,4 +162,42 @@
 
 .wp-list-table .column-actions {
     width: 80px;
+}
+
+/* ==========================================================================
+   Admin Settings Form Styling
+   ========================================================================== */
+
+.gym-settings-form .form-table th {
+    color: #2C3E50;
+    font-weight: 600;
+}
+
+.gym-settings-form .form-table td input[type="text"],
+.gym-settings-form .form-table td input[type="email"],
+.gym-settings-form .form-table td input[type="number"] {
+    border: 2px solid #DFE6E9;
+    border-radius: 4px;
+    padding: 8px 12px;
+    transition: border-color 0.3s ease;
+}
+
+.gym-settings-form .form-table td input:focus {
+    border-color: #4ECDC4;
+    box-shadow: 0 0 0 2px rgba(78, 205, 196, 0.15);
+    outline: none;
+}
+
+/* Admin Notice Styling */
+.gym-admin-notice {
+    border-left-color: #4ECDC4;
+    background: #F5F7FA;
+}
+
+.gym-admin-notice.notice-success {
+    border-left-color: #00B894;
+}
+
+.gym-admin-notice.notice-error {
+    border-left-color: #D63031;
 }

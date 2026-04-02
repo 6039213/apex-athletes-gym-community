@@ -1,93 +1,158 @@
-# Gym Community Theme
+# Apex Athletes - Gym Community Theme
 
-Een modern en responsive WordPress thema speciaal ontwikkeld voor een Gym/Fitness Community.
+Een professioneel en responsive WordPress thema voor de Apex Athletes Gym Community, gebouwd met custom post types, shortcodes en een volledig eigen design gebaseerd op de Apex Athletes huisstijl.
 
 ## Beschrijving
 
-Dit custom WordPress thema is ontwikkeld als onderdeel van het DevSkills WordPress project. Het biedt een professionele en gebruiksvriendelijke interface voor een gym community website met focus op nieuws, activiteiten en reviews.
+Dit custom WordPress thema is ontwikkeld als onderdeel van het DevSkills WordPress project. Versie 2.0.0 bevat een volledige herwerking met de Apex Athletes huisstijl, inclusief:
+
+- Consistente branding met CSS custom properties
+- Google Fonts integratie (Oswald + Montserrat)
+- WordPress Customizer opties voor dynamische kleur- en tekstwijzigingen
+- Semantic HTML5 met ARIA labels voor toegankelijkheid
+- Responsive design voor alle schermformaten
+- Nederlandse lokalisatie
+
+## Stijlgids - Apex Athletes
+
+### Kleuren
+
+| Kleur           | Hex       | CSS Variable        | Gebruik              |
+|-----------------|-----------|---------------------|----------------------|
+| Dark Navy       | `#2C3E50` | `--color-primary`   | Headers, tekst       |
+| Teal            | `#2C6E6A` | `--color-secondary` | Accenten, hover      |
+| Cyan            | `#4ECDC4` | `--color-accent`    | Knoppen, highlights  |
+| Dark            | `#1A1A2E` | `--color-dark`      | Footer, hero bg      |
+| Light Gray      | `#F5F7FA` | `--color-light`     | Achtergrond          |
+| White           | `#FFFFFF` | `--color-white`     | Kaarten, content     |
+
+### Fonts
+
+- **Headings:** Oswald (Google Fonts) - uppercase, bold
+- **Body:** Montserrat (Google Fonts) - regular 400, medium 500, semibold 600
 
 ## Features
 
-- **Volledig Responsive:** Werkt perfect op desktop, tablet en mobiel
-- **Custom Post Type Support:** Klaar voor gym activiteiten en reviews
+- **Apex Athletes Branding:** Volledige huisstijl met CSS custom properties
+- **Volledig Responsive:** Mobile-first design voor alle schermformaten
+- **Custom Post Type Templates:** Archief en single templates voor `gym_activity` en `gym_review`
+- **Hero Section:** Dynamische homepage hero met Customizer tekst
+- **Community Features:** Feature cards met iconen en beschrijvingen
+- **Stats Counter:** Statistieken sectie met tellers
 - **Widget Areas:** Sidebar en 3 footer widget areas
-- **Custom Menus:** Primary en footer navigatie
-- **Featured Images:** Ondersteuning voor uitgelichte afbeeldingen
-- **Custom Logo:** Upload je eigen logo
-- **Color Customizer:** Pas de primary color aan via WordPress Customizer
-- **SEO Friendly:** Geoptimaliseerd voor zoekmachines
-- **Accessibility Ready:** ARIA labels en semantic HTML
+- **Custom Menus:** Primary en footer navigatie met dropdown support
+- **Featured Images:** Custom image sizes voor optimale weergave
+- **Custom Logo:** Upload via WordPress Customizer
+- **Customizer Opties:** Primaire kleur, accent kleur, hero tekst, footer tekst
+- **SEO Friendly:** Semantic HTML5 met correcte heading hiërarchie
+- **Accessibility Ready:** ARIA labels, keyboard navigatie, screen reader support
+- **Plugin Integratie:** Naadloze samenwerking met Gym Community Plugin
 
 ## Installatie
 
-1. Download het thema
-2. Upload naar `wp-content/themes/gym-community-theme/`
-3. Activeer het thema in WordPress admin onder Appearance > Themes
-4. Configureer menu's onder Appearance > Menus
-5. Pas kleuren aan onder Appearance > Customize
+1. Upload de `gym-community-theme` folder naar `wp-content/themes/`
+2. Activeer het thema via **Weergave > Thema's**
+3. Installeer en activeer de **Gym Community Plugin**
+4. Configureer menu's via **Weergave > Menu's**
+5. Pas branding aan via **Weergave > Customizer**
 
 ## Template Bestanden
 
-- `index.php` - Main template
-- `front-page.php` - Homepage template
+### Basis Templates
+- `index.php` - Fallback template
+- `front-page.php` - Homepage met hero, features, stats, activiteiten, reviews en CTA
 - `single.php` - Single post template
-- `page.php` - Page template
-- `archive.php` - Archive template
-- `search.php` - Search results template
-- `404.php` - Error page template
-- `header.php` - Header template
-- `footer.php` - Footer template
-- `sidebar.php` - Sidebar template
+- `page.php` - Pagina template
+- `archive.php` - Standaard archief template
+- `search.php` - Zoekresultaten
+- `404.php` - Foutpagina met Apex Athletes branding
+- `header.php` - Header met sticky navigatie en mobiel menu
+- `footer.php` - Footer met widget areas en branding
+- `sidebar.php` - Zijbalk template
+
+### Custom Post Type Templates
+- `archive-gym_activity.php` - Activiteiten archief met grid layout, metadata, badges en beschikbaarheid
+- `archive-gym_review.php` - Reviews archief met grid layout, sterrenratings en productinfo
+- `single-gym_activity.php` - Activiteit detail met inschrijfformulier, trainer, locatie en boekingsstatus
+- `single-gym_review.php` - Review detail met pros/cons, productlink en gerelateerde reviews
+
+### Ondersteunende Bestanden
+- `functions.php` - Theme setup, Google Fonts, Customizer, widgets, image sizes
+- `style.css` - Volledige stylesheet met CSS custom properties
+
+## Customizer Opties
+
+| Optie                     | Sectie               | Beschrijving                              |
+|---------------------------|----------------------|-------------------------------------------|
+| Primary Color             | Apex Athletes Kleuren | Hoofdkleur voor headers en tekst          |
+| Accent Color              | Apex Athletes Kleuren | Accentkleur voor knoppen en highlights    |
+| Hero Subtitle             | Apex Athletes Teksten | Ondertitel op de homepage hero sectie     |
+| Footer Text               | Apex Athletes Teksten | Extra tekst in de footer                  |
 
 ## Widget Areas
 
-1. **Sidebar** - Hoofdzijbalk voor posts en pagina's
+1. **Sidebar** - Zijbalk voor posts en pagina's
 2. **Footer Widget Area 1** - Eerste footer kolom
 3. **Footer Widget Area 2** - Tweede footer kolom
 4. **Footer Widget Area 3** - Derde footer kolom
 
 ## Menu Locaties
 
-1. **Primary Menu** - Hoofdnavigatie in header
-2. **Footer Menu** - Navigatie in footer
+1. **Primary Menu** - Hoofdnavigatie in de header (met dropdown support)
+2. **Footer Menu** - Navigatie links in de footer
 
 ## Custom Image Sizes
 
-- `gym-community-featured` - 800x400px (voor featured images)
-- `gym-community-thumbnail` - 300x200px (voor thumbnails)
+- `gym-community-featured` - 800x400px (hero en featured images)
+- `gym-community-thumbnail` - 300x200px (kaarten en thumbnails)
 
-## Aanbevolen Plugins
+## front-page.php Secties
 
-- **Advanced Custom Fields (ACF)** - Voor custom fields bij activiteiten en reviews
-- **Contact Form 7** - Voor contactformulieren
-- **Yoast SEO** - Voor SEO optimalisatie
+De homepage bevat de volgende secties:
 
-## Customization
+1. **Hero Section** - Gradient achtergrond, titel, ondertitel (Customizer), CTA knoppen
+2. **Community Features** - 4 feature cards met iconen (Activiteiten, Reviews, Community, Ondersteuning)
+3. **Stats Counter** - 4 statistieken (leden, activiteiten, reviews, trainers)
+4. **Aankomende Activiteiten** - 3 meest recente activiteiten met metadata
+5. **Laatste Reviews** - 3 meest recente reviews met sterrenratings
+6. **Laatste Nieuws** - 3 recente blog posts
+7. **CTA Sectie** - Call-to-action met gradient achtergrond
 
-### Kleuren Aanpassen
+## Plugin Integratie
 
-Ga naar Appearance > Customize > Colors en pas de Primary Color aan.
+Het thema is ontworpen voor naadloze samenwerking met de **Gym Community Plugin** (v2.0.0+):
 
-### Logo Toevoegen
-
-Ga naar Appearance > Customize > Site Identity en upload je logo.
-
-### Menu's Configureren
-
-1. Ga naar Appearance > Menus
-2. Maak een nieuw menu aan
-3. Voeg pagina's toe
-4. Wijs toe aan "Primary Menu" of "Footer Menu"
+- Archief templates tonen plugin metadata (datum, trainer, capaciteit, rating, etc.)
+- Single templates gebruiken plugin shortcodes voor inschrijfformulieren
+- Homepage haalt dynamisch activiteiten en reviews op
+- CSS custom properties worden gedeeld tussen thema en plugin
+- Plugin CSS gebruikt `var()` fallbacks voor standalone gebruik
 
 ## Browser Support
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
-- Mobile browsers
+- Chrome (laatste 2 versies)
+- Firefox (laatste 2 versies)
+- Safari (laatste 2 versies)
+- Edge (laatste 2 versies)
+- iOS Safari en Android Chrome
 
 ## Changelog
+
+### Version 2.0.0 - Apex Athletes Branding
+- Volledige herwerking met Apex Athletes huisstijl
+- CSS custom properties voor alle kleuren, fonts, spacing en shadows
+- Google Fonts integratie (Oswald + Montserrat)
+- WordPress Customizer opties (kleuren, teksten)
+- Dynamische CSS output via `wp_head`
+- Nieuwe `front-page.php` met 7 secties
+- `archive-gym_activity.php` en `archive-gym_review.php` templates
+- Bijgewerkte `single-gym_activity.php` met branding en inschrijfformulier
+- Bijgewerkte `single-gym_review.php` met pros/cons en gerelateerde reviews
+- `404.php` met Apex Athletes branding en navigatie
+- `header.php` met sticky navigatie, mobiel menu en ARIA labels
+- `footer.php` met widget areas, branding en dynamische footer tekst
+- Responsive design met breakpoints op 1024px, 768px en 480px
+- Utility classes voor margins, padding en tekst
 
 ### Version 1.0.0
 - Initial release
@@ -99,15 +164,15 @@ Ga naar Appearance > Customize > Site Identity en upload je logo.
 
 ## Credits
 
-- Ontwikkeld door: [Jouw Naam]
-- Project: DevSkills WordPress Thema-ontwikkeling
-- Jaar: 2026
+- **Ontwikkeld door:** Apex Athletes Development
+- **Project:** DevSkills WordPress Thema-ontwikkeling
+- **Jaar:** 2025
+- **Fonts:** Google Fonts (Oswald, Montserrat)
+- **Icons:** Emoji-based iconen (geen externe icon library vereist)
 
 ## Licentie
 
 GNU General Public License v2 or later
 http://www.gnu.org/licenses/gpl-2.0.html
 
-## Support
-
-Voor vragen of problemen, zie de documentatie of neem contact op.
+Dit project is ontwikkeld voor educatieve doeleinden als onderdeel van een software development opleiding.

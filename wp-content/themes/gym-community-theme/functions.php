@@ -130,11 +130,14 @@ add_action( 'widgets_init', 'gym_community_widgets_init' );
  * Enqueue scripts and styles
  */
 function gym_community_scripts() {
+    // Enqueue Google Fonts (Montserrat + Oswald - Apex Athletes Stijlgids)
+    wp_enqueue_style( 'gym-community-google-fonts', 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap', array(), null );
+
     // Enqueue main stylesheet
-    wp_enqueue_style( 'gym-community-style', get_stylesheet_uri(), array(), '1.0.0' );
+    wp_enqueue_style( 'gym-community-style', get_stylesheet_uri(), array( 'gym-community-google-fonts' ), '2.0.0' );
 
     // Enqueue custom JavaScript
-    wp_enqueue_script( 'gym-community-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '1.0.0', true );
+    wp_enqueue_script( 'gym-community-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '2.0.0', true );
 
     // Enqueue comment reply script
     if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
@@ -319,17 +322,53 @@ add_action( 'admin_notices', 'gym_community_acf_notice' );
  * Customizer additions
  */
 function gym_community_customize_register( $wp_customize ) {
-    // Add gym community color scheme
-    $wp_customize->add_setting( 'gym_community_primary_color', array(
-        'default'           => '#e74c3c',
-        'sanitize_callback' => 'sanitize_hex_color',
+    // Apex Athletes Section
+    $wp_customize->add_section( 'apex_athletes_settings', array(
+        'title'    => __( 'Apex Athletes Instellingen', 'gym-community' ),
+        'priority' => 30,
     ) );
 
+    // Primary Color
+    $wp_customize->add_setting( 'gym_community_primary_color', array(
+        'default'           => '#2C3E50',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ) );
     $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'gym_community_primary_color', array(
-        'label'    => __( 'Primary Color', 'gym-community' ),
-        'section'  => 'colors',
-        'settings' => 'gym_community_primary_color',
+        'label'    => __( 'Primaire Kleur', 'gym-community' ),
+        'section'  => 'apex_athletes_settings',
     ) ) );
+
+    // Accent Color
+    $wp_customize->add_setting( 'gym_community_accent_color', array(
+        'default'           => '#4ECDC4',
+        'sanitize_callback' => 'sanitize_hex_color',
+    ) );
+    $wp_customize->add_control( new WP_Customize_Color_Control( $wp_customize, 'gym_community_accent_color', array(
+        'label'    => __( 'Accent Kleur', 'gym-community' ),
+        'section'  => 'apex_athletes_settings',
+    ) ) );
+
+    // Hero Subtitle
+    $wp_customize->add_setting( 'gym_community_hero_subtitle', array(
+        'default'           => 'Jouw ultieme fitness community voor trainingen, reviews en evenementen.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'gym_community_hero_subtitle', array(
+        'label'   => __( 'Hero Subtitel', 'gym-community' ),
+        'section' => 'apex_athletes_settings',
+        'type'    => 'textarea',
+    ) );
+
+    // Footer Text
+    $wp_customize->add_setting( 'gym_community_footer_text', array(
+        'default'           => 'Apex Athletes is jouw community voor fitness, gezondheid en welzijn.',
+        'sanitize_callback' => 'sanitize_text_field',
+    ) );
+    $wp_customize->add_control( 'gym_community_footer_text', array(
+        'label'   => __( 'Footer Tekst', 'gym-community' ),
+        'section' => 'apex_athletes_settings',
+        'type'    => 'textarea',
+    ) );
 }
 add_action( 'customize_register', 'gym_community_customize_register' );
 
@@ -337,30 +376,13 @@ add_action( 'customize_register', 'gym_community_customize_register' );
  * Output custom CSS for primary color
  */
 function gym_community_custom_css() {
-    $primary_color = get_theme_mod( 'gym_community_primary_color', '#e74c3c' );
+    $primary_color = get_theme_mod( 'gym_community_primary_color', '#2C3E50' );
+    $accent_color = get_theme_mod( 'gym_community_accent_color', '#4ECDC4' );
     ?>
     <style type="text/css">
-        a,
-        .main-navigation a:hover,
-        .main-navigation .current-menu-item a,
-        .entry-meta a:hover,
-        .widget ul li a:hover,
-        .site-info a,
-        .footer-widget a:hover {
-            color: <?php echo esc_attr( $primary_color ); ?>;
-        }
-        
-        .entry-header,
-        .pagination .current,
-        .pagination a:hover,
-        .btn,
-        .more-link,
-        .menu-toggle {
-            background-color: <?php echo esc_attr( $primary_color ); ?>;
-        }
-        
-        .widget-title {
-            border-bottom-color: <?php echo esc_attr( $primary_color ); ?>;
+        :root {
+            --color-primary: <?php echo esc_attr( $primary_color ); ?>;
+            --color-accent: <?php echo esc_attr( $accent_color ); ?>;
         }
     </style>
     <?php

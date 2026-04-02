@@ -1,9 +1,14 @@
 /**
- * Gym Community Plugin Styles
+ * Gym Community Plugin Styles - Apex Athletes Branded
+ *
+ * Consistente styling met het Apex Athletes thema.
+ * Gebruikt CSS custom properties uit het thema voor kleuren en fonts.
+ *
+ * @since 2.0.0
  */
 
 /* ==========================================================================
-   Activities List
+   Activities List (Shortcode Output)
    ========================================================================== */
 
 .gym-activities-list {
@@ -14,111 +19,143 @@
 }
 
 .gym-activity-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: var(--color-white, #fff);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.05));
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: var(--transition, all 0.3s ease);
+    border: 1px solid var(--color-gray, #DFE6E9);
+    display: flex;
+    flex-direction: column;
 }
 
 .gym-activity-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    box-shadow: var(--shadow-lg, 0 8px 24px rgba(0,0,0,0.15));
+    border-color: var(--color-accent, #4ECDC4);
 }
 
 .gym-activity-card.activity-full {
-    opacity: 0.7;
+    opacity: 0.65;
 }
 
 .activity-thumbnail img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    transition: var(--transition, all 0.3s ease);
+}
+
+.gym-activity-card:hover .activity-thumbnail img {
+    transform: scale(1.05);
 }
 
 .activity-content {
-    padding: 20px;
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .activity-content h3 {
     margin: 0 0 15px 0;
-    color: #2c3e50;
-    font-size: 1.5rem;
+    color: var(--color-primary, #2C3E50);
+    font-family: var(--font-heading, 'Oswald', sans-serif);
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.activity-content h3 a {
+    color: var(--color-primary, #2C3E50);
+    text-decoration: none;
+}
+
+.activity-content h3 a:hover {
+    color: var(--color-accent, #4ECDC4);
 }
 
 .activity-meta {
     margin-bottom: 15px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .activity-meta p {
-    margin: 5px 0;
-    color: #555;
+    margin: 0;
+    color: var(--color-text-light, #636E72);
 }
 
 .activity-meta strong {
-    color: #2c3e50;
+    color: var(--color-primary, #2C3E50);
 }
 
 .difficulty-beginner {
-    color: #27ae60;
+    color: #00B894;
     font-weight: 600;
 }
 
 .difficulty-intermediate {
-    color: #f39c12;
+    color: #E17055;
     font-weight: 600;
 }
 
 .difficulty-advanced {
-    color: #e74c3c;
+    color: #D63031;
     font-weight: 600;
 }
 
 .difficulty-all-levels {
-    color: #3498db;
+    color: var(--color-secondary, #2C6E6A);
     font-weight: 600;
 }
 
 .spots-available {
-    color: #27ae60;
+    color: var(--color-success, #00B894);
     font-weight: 600;
 }
 
 .spots-full {
-    color: #e74c3c;
+    color: var(--color-danger, #D63031);
     font-weight: 700;
 }
 
 .activity-excerpt {
     margin-bottom: 15px;
-    color: #666;
-    line-height: 1.6;
+    color: var(--color-text-light, #636E72);
+    line-height: 1.7;
+    font-size: 0.95rem;
 }
 
 .activity-actions {
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 /* ==========================================================================
-   Schedule
+   Schedule (Shortcode Output)
    ========================================================================== */
 
 .gym-schedule {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: var(--color-white, #fff);
+    padding: 35px;
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.05));
     margin: 30px 0;
+    border: 1px solid var(--color-gray, #DFE6E9);
 }
 
 .gym-schedule h3 {
     margin-top: 0;
-    color: #2c3e50;
-    border-bottom: 2px solid #e74c3c;
-    padding-bottom: 10px;
+    color: var(--color-primary, #2C3E50);
+    border-bottom: 3px solid var(--color-accent, #4ECDC4);
+    padding-bottom: 12px;
+    font-family: var(--font-heading, 'Oswald', sans-serif);
+    text-transform: uppercase;
 }
 
 .schedule-day {
@@ -126,13 +163,16 @@
 }
 
 .schedule-day h4 {
-    color: #34495e;
+    color: var(--color-primary, #2C3E50);
     margin-bottom: 15px;
-    font-size: 1.2rem;
+    font-family: var(--font-heading, 'Oswald', sans-serif);
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .schedule-activities {
-    border-left: 3px solid #e74c3c;
+    border-left: 3px solid var(--color-accent, #4ECDC4);
     padding-left: 20px;
 }
 
@@ -140,8 +180,8 @@
     display: flex;
     align-items: center;
     gap: 15px;
-    padding: 10px 0;
-    border-bottom: 1px solid #ecf0f1;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--color-gray, #DFE6E9);
 }
 
 .schedule-item:last-child {
@@ -150,8 +190,10 @@
 
 .schedule-time {
     font-weight: 700;
-    color: #e74c3c;
+    color: var(--color-accent, #4ECDC4);
     min-width: 70px;
+    font-family: var(--font-heading, 'Oswald', sans-serif);
+    font-size: 1.05rem;
 }
 
 .schedule-title {
@@ -159,52 +201,62 @@
 }
 
 .schedule-title a {
-    color: #2c3e50;
+    color: var(--color-primary, #2C3E50);
     text-decoration: none;
+    font-weight: 500;
+    transition: var(--transition, all 0.3s ease);
 }
 
 .schedule-title a:hover {
-    color: #e74c3c;
+    color: var(--color-accent, #4ECDC4);
 }
 
 .schedule-trainer {
-    color: #7f8c8d;
-    font-size: 0.9rem;
+    color: var(--color-text-light, #636E72);
+    font-size: 0.85rem;
 }
 
 /* ==========================================================================
-   Reviews
+   Reviews (Shortcode Output)
    ========================================================================== */
 
 .gym-reviews-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
     gap: 25px;
     margin: 30px 0;
 }
 
 .gym-review-card {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 20px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--color-white, #fff);
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.05));
+    padding: 25px;
+    transition: var(--transition, all 0.3s ease);
+    border: 1px solid var(--color-gray, #DFE6E9);
 }
 
 .gym-review-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg, 0 8px 24px rgba(0,0,0,0.15));
+    border-color: var(--color-accent, #4ECDC4);
 }
 
 .review-thumbnail {
     margin-bottom: 15px;
+    border-radius: var(--radius-md, 8px);
+    overflow: hidden;
 }
 
 .review-thumbnail img {
     width: 100%;
-    height: 150px;
+    height: 160px;
     object-fit: cover;
-    border-radius: 5px;
+    transition: var(--transition, all 0.3s ease);
+}
+
+.gym-review-card:hover .review-thumbnail img {
+    transform: scale(1.05);
 }
 
 .review-header {
@@ -213,8 +265,19 @@
 
 .review-header h4 {
     margin: 0 0 10px 0;
-    color: #2c3e50;
-    font-size: 1.3rem;
+    color: var(--color-primary, #2C3E50);
+    font-family: var(--font-heading, 'Oswald', sans-serif);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+}
+
+.review-header h4 a {
+    color: var(--color-primary, #2C3E50);
+    text-decoration: none;
+}
+
+.review-header h4 a:hover {
+    color: var(--color-accent, #4ECDC4);
 }
 
 .review-rating {
@@ -224,8 +287,9 @@
 }
 
 .stars {
-    color: #f39c12;
-    font-size: 18px;
+    color: #F39C12;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
 }
 
 .star {
@@ -233,33 +297,35 @@
 }
 
 .rating-number {
-    color: #7f8c8d;
-    font-size: 0.9rem;
+    color: var(--color-text-light, #636E72);
+    font-size: 0.85rem;
+    font-weight: 500;
 }
 
 .review-content h5 {
     margin: 0 0 10px 0;
-    color: #34495e;
-    font-size: 1.1rem;
+    color: var(--color-primary, #2C3E50);
+    font-size: 1rem;
 }
 
 .review-excerpt {
-    color: #666;
-    line-height: 1.6;
+    color: var(--color-text-light, #636E72);
+    line-height: 1.7;
     margin-bottom: 15px;
+    font-size: 0.95rem;
 }
 
 .review-meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 12px;
     margin-bottom: 15px;
     font-size: 0.85rem;
-    color: #7f8c8d;
+    color: var(--color-text-light, #636E72);
 }
 
 .verified-badge {
-    color: #27ae60;
+    color: var(--color-success, #00B894);
     font-weight: 600;
 }
 
@@ -267,38 +333,47 @@
     display: flex;
     gap: 10px;
     flex-wrap: wrap;
+    margin-top: auto;
 }
 
 /* ==========================================================================
-   Registration Form
+   Registration Form (Shortcode Output)
    ========================================================================== */
 
 .gym-registration-form {
-    background: #fff;
-    padding: 30px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    background: var(--color-white, #fff);
+    padding: 35px;
+    border-radius: var(--radius-lg, 16px);
+    box-shadow: var(--shadow-sm, 0 2px 4px rgba(0,0,0,0.05));
     margin: 30px 0;
+    border: 1px solid var(--color-gray, #DFE6E9);
 }
 
 .gym-registration-form h3 {
     margin-top: 0;
-    color: #2c3e50;
-    border-bottom: 2px solid #e74c3c;
-    padding-bottom: 10px;
+    color: var(--color-primary, #2C3E50);
+    border-bottom: 3px solid var(--color-accent, #4ECDC4);
+    padding-bottom: 12px;
+    font-family: var(--font-heading, 'Oswald', sans-serif);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .registration-full {
-    background: #ffe5e5;
-    border-left: 4px solid #e74c3c;
-    padding: 15px;
-    border-radius: 5px;
+    background: #FADBD8;
+    border-left: 4px solid var(--color-danger, #D63031);
+    padding: 20px;
+    border-radius: var(--radius-md, 8px);
 }
 
 .registration-full p {
     margin: 0;
-    color: #c0392b;
+    color: var(--color-danger, #D63031);
     font-weight: 600;
+}
+
+.gym-form {
+    position: relative;
 }
 
 .gym-form .form-group {
@@ -307,100 +382,117 @@
 
 .gym-form label {
     display: block;
-    margin-bottom: 5px;
-    color: #2c3e50;
-    font-weight: 600;
+    margin-bottom: 6px;
+    color: var(--color-text, #2D3436);
+    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .gym-form .required {
-    color: #e74c3c;
+    color: var(--color-danger, #D63031);
 }
 
 .gym-form input[type="text"],
 .gym-form input[type="email"],
 .gym-form input[type="tel"] {
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    font-size: 1rem;
-    transition: border-color 0.3s ease;
+    padding: 12px 16px;
+    border: 2px solid var(--color-gray, #DFE6E9);
+    border-radius: var(--radius-sm, 4px);
+    font-size: 0.95rem;
+    font-family: var(--font-body, 'Montserrat', sans-serif);
+    transition: var(--transition, all 0.3s ease);
+    background: var(--color-white, #fff);
 }
 
 .gym-form input:focus {
     outline: none;
-    border-color: #e74c3c;
+    border-color: var(--color-accent, #4ECDC4);
+    box-shadow: 0 0 0 3px rgba(78, 205, 196, 0.15);
+}
+
+.gym-form .btn {
+    margin-top: 5px;
 }
 
 .form-message {
     margin: 15px 0;
-    padding: 12px;
-    border-radius: 5px;
+    padding: 15px 20px;
+    border-radius: var(--radius-md, 8px);
     display: none;
+    font-weight: 500;
 }
 
 .form-message.success {
     display: block;
-    background: #d4edda;
-    border: 1px solid #c3e6cb;
-    color: #155724;
+    background: #D5F5E3;
+    border: 1px solid #A9DFBF;
+    color: #1E8449;
 }
 
 .form-message.error {
     display: block;
-    background: #f8d7da;
-    border: 1px solid #f5c6cb;
-    color: #721c24;
+    background: #FADBD8;
+    border: 1px solid #F1948A;
+    color: #922B21;
 }
 
 /* ==========================================================================
-   Buttons
+   Plugin Buttons (consistent met thema)
    ========================================================================== */
 
-.btn {
+.gym-community-plugin .btn,
+.gym-activity-card .btn,
+.gym-review-card .btn,
+.gym-registration-form .btn {
     display: inline-block;
-    padding: 12px 25px;
-    background-color: #e74c3c;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
+    padding: 10px 24px;
+    background-color: var(--color-accent, #4ECDC4);
+    color: var(--color-white, #fff);
+    border: 2px solid var(--color-accent, #4ECDC4);
+    border-radius: var(--radius-sm, 4px);
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.85rem;
+    font-family: var(--font-body, 'Montserrat', sans-serif);
+    font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: var(--transition, all 0.3s ease);
     text-align: center;
 }
 
-.btn:hover {
-    background-color: #c0392b;
-    color: #fff;
+.gym-community-plugin .btn:hover,
+.gym-activity-card .btn:hover,
+.gym-review-card .btn:hover,
+.gym-registration-form .btn:hover {
+    background-color: var(--color-secondary, #2C6E6A);
+    border-color: var(--color-secondary, #2C6E6A);
+    color: var(--color-white, #fff);
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 12px rgba(78, 205, 196, 0.4);
 }
 
-.btn-primary {
-    background-color: #e74c3c;
+.gym-activity-card .btn-outline,
+.gym-review-card .btn-outline {
+    background-color: transparent;
+    border-color: var(--color-accent, #4ECDC4);
+    color: var(--color-accent, #4ECDC4);
 }
 
-.btn-primary:hover {
-    background-color: #c0392b;
-}
-
-.btn-secondary {
-    background-color: #3498db;
-}
-
-.btn-secondary:hover {
-    background-color: #2980b9;
+.gym-activity-card .btn-outline:hover,
+.gym-review-card .btn-outline:hover {
+    background-color: var(--color-accent, #4ECDC4);
+    color: var(--color-white, #fff);
 }
 
 .btn-small {
-    padding: 8px 15px;
-    font-size: 0.9rem;
+    padding: 8px 16px;
+    font-size: 0.8rem;
 }
 
 .btn-external::after {
-    content: ' ↗';
+    content: ' \2197';
 }
 
 /* ==========================================================================
@@ -442,7 +534,7 @@
 
     .activity-content,
     .gym-review-card {
-        padding: 15px;
+        padding: 18px;
     }
 }
 
@@ -463,8 +555,8 @@
     width: 30px;
     height: 30px;
     margin: -15px 0 0 -15px;
-    border: 3px solid #f3f3f3;
-    border-top: 3px solid #e74c3c;
+    border: 3px solid var(--color-gray, #DFE6E9);
+    border-top: 3px solid var(--color-accent, #4ECDC4);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }

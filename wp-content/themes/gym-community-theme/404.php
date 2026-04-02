@@ -1,8 +1,9 @@
 <?php
 /**
- * The template for displaying 404 pages (not found)
+ * 404 Template - Apex Athletes
  *
  * @package Gym_Community_Theme
+ * @since 2.0.0
  */
 
 get_header();
@@ -10,27 +11,18 @@ get_header();
 
 <div class="content-area">
     <section class="error-404 not-found">
-        <header class="page-header">
-            <h1 class="page-title"><?php _e( '404 - Page Not Found', 'gym-community' ); ?></h1>
-        </header>
+        <h1>404</h1>
+        <h2><?php _e( 'Pagina niet gevonden', 'gym-community' ); ?></h2>
+        <p><?php _e( 'De pagina die je zoekt bestaat niet of is verplaatst. Gebruik de zoekfunctie of bekijk onze populaire pagina\'s.', 'gym-community' ); ?></p>
 
-        <div class="page-content">
-            <p><?php _e( 'Oops! The page you are looking for doesn\'t exist. It might have been moved or deleted.', 'gym-community' ); ?></p>
-
-            <h2><?php _e( 'Try searching for what you need:', 'gym-community' ); ?></h2>
+        <div class="mt-3 mb-3" style="max-width: 500px; margin-left: auto; margin-right: auto;">
             <?php get_search_form(); ?>
+        </div>
 
-            <h2><?php _e( 'Or browse our popular pages:', 'gym-community' ); ?></h2>
-            <ul>
-                <li><a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php _e( 'Home', 'gym-community' ); ?></a></li>
-                <?php
-                wp_list_pages( array(
-                    'title_li' => '',
-                    'depth'    => 1,
-                    'number'   => 5,
-                ) );
-                ?>
-            </ul>
+        <div class="hero-buttons mt-3">
+            <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="btn btn-primary"><?php _e( 'Terug naar Home', 'gym-community' ); ?></a>
+            <a href="<?php echo esc_url( get_post_type_archive_link( 'gym_activity' ) ); ?>" class="btn btn-outline"><?php _e( 'Activiteiten', 'gym-community' ); ?></a>
+            <a href="<?php echo esc_url( get_post_type_archive_link( 'gym_review' ) ); ?>" class="btn btn-outline"><?php _e( 'Reviews', 'gym-community' ); ?></a>
         </div>
     </section>
 </div>
