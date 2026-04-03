@@ -1,3 +1,14 @@
+# Project documentation (only keep plugin README)
+/README.md
+/CHALLENGE-3B-INSTRUCTIES.md
+/DEPLOYMENT-GUIDE-FTP.md
+/DOCKER-MIGRATIE-SAMENVATTING.md
+/INLEVEREN-INSTRUCTIES.md
+/PROJECT-STATUS.md
+/QUICK-DEPLOYMENT-CHECKLIST.md
+/keuze-uitleg.md
+/CHALLENGE-3B-URL-MIGRATION.sql
+
 # WordPress specific
 wp-config.php
 wp-content/uploads/
