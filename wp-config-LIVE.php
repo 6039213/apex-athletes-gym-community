@@ -1,0 +1,35 @@
+<?php
+// ** Database settings - SPL Sites ** //
+define( 'DB_NAME', 'st1738846938' );
+define( 'DB_USER', 'st1738846938' );
+define( 'DB_PASSWORD', 'R5IFHm9dw7k6W6r' );
+
+// Try these DB_HOST options one by one:
+define( 'DB_HOST', 'localhost' );        // Try this first
+// define( 'DB_HOST', '127.0.0.1' );     // If localhost fails, try this
+// define( 'DB_HOST', 'localhost:3306' ); // Or this
+// define( 'DB_HOST', '127.0.0.1:3306' ); // Or this
+define( 'DB_CHARSET', 'utf8mb4' );
+define( 'DB_COLLATE', '' );
+
+// ** Security Keys ** //
+define( 'AUTH_KEY',         'put your unique phrase here' );
+define( 'SECURE_AUTH_KEY',  'put your unique phrase here' );
+define( 'LOGGED_IN_KEY',    'put your unique phrase here' );
+define( 'NONCE_KEY',        'put your unique phrase here' );
+define( 'AUTH_SALT',        'put your unique phrase here' );
+define( 'SECURE_AUTH_SALT', 'put your unique phrase here' );
+define( 'LOGGED_IN_SALT',   'put your unique phrase here' );
+define( 'NONCE_SALT',       'put your unique phrase here' );
+
+$table_prefix = 'wp_';
+
+define( 'WP_DEBUG', false );
+define( 'WP_DEBUG_LOG', false );
+define( 'WP_DEBUG_DISPLAY', false );
+
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+
+require_once ABSPATH . 'wp-settings.php';
