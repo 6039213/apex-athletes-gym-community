@@ -9,6 +9,9 @@
 /keuze-uitleg.md
 /CHALLENGE-3B-URL-MIGRATION.sql
 
+# Batch files
+*.bat
+
 # WordPress specific
 wp-config.php
 wp-content/uploads/
